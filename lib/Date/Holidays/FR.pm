@@ -7,7 +7,37 @@ use Date::Easter;
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(is_fr_holiday);
-our $VERSION = '0.01';
+
+our $VERSION = '0.02';
+
+sub get_easter {
+	my ($year) = @_;
+
+	return Date::Easter::easter($year);
+}
+
+sub get_ascension {
+	my ($year) = @_;
+
+	return _compute_date_from_easter($year, 39);
+}
+
+sub get_pentecost {
+	my ($year) = @_;
+
+	return _compute_date_from_easter($year, 50);
+}
+
+sub _compute_date_from_easter {
+	my ($year, $delta) = @_;
+
+	my ($easter_month, $easter_day) = get_easter($year);
+	my $easter_date = Time::Local::timelocal(0, 0, 1, $easter_day, $easter_month - 1, $year - 1900);
+	my ($date_month, $date_day) = (localtime($easter_date + $delta * 86400))[4, 3];
+	$date_month++;
+
+	return ($date_month, $date_day);
+}
 
 sub is_fr_holiday {
 	my ($year, $month, $day) = @_;
@@ -21,12 +51,10 @@ sub is_fr_holiday {
 	elsif ($day == 11 and $month == 11) { return "Armistice 14-18"; }
 	elsif ($day == 25 and $month == 12) { return "Noël"; }
 	else {
-		my ($easter_month, $easter_day) = Date::Easter::easter($year);
-		my $easter_date = Time::Local::timelocal(0, 0, 1, $easter_day, $easter_month - 1, $year - 1900);
-		my ($ascension_month, $ascension_day) = (localtime($easter_date + 39 * 86400))[4, 3];
-		$ascension_month++;
-		my ($pentecost_month, $pentecost_day) = (localtime($easter_date + 50 * 86400))[4, 3];
-		$pentecost_month++;
+		my ($easter_month, $easter_day) = get_easter($year);
+		my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
+		my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
+
 		if ($day == ($easter_day + 1) and $month == $easter_month) { return "Lundi de pâques"; }
 		elsif ($day == $ascension_day and $month == $ascension_month) { return "Ascension"; }
 		elsif ($day == $pentecost_day and $month == $pentecost_month) { return "Pentecôte"; }
@@ -48,6 +76,10 @@ Date::Holidays::FR - Determine French holidays
   $year  += 1900;
   $month += 1;
   print "Woohoo" if is_fr_holiday($year, $month, $day);
+
+  my ($month, $day) = get_easter($year);
+  my ($month, $day) = get_ascension($year);
+  my ($month, $day) = get_pentecost($year);
 
 =head1 DESCRIPTION
 
@@ -93,6 +125,18 @@ Pentecost is 50 days after easter.
 
 Returns the name of the holiday in french that falls on the given day, or undef
 if there is none.
+
+=head2 get_easter($year)
+
+Returns the month and day of easter day for the given year.
+
+=head2 get_ascension($year)
+
+Returns the month and day of ascension day for the given year.
+
+=head2 get_pentecost($year)
+
+Returns the month and day of pentecost day for the given year.
 
 =head1 REQUESTS & BUGS
 
