@@ -1,0 +1,11 @@
+*~
+*gz
+blib
+cover_db
+Build
+Makefile
+Makefile.old
+MYMETA.yml
+MYMETA.json
+pm_to_blib
+_build
