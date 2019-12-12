@@ -84,7 +84,7 @@ Date::Holidays::FR - Determine French holidays
   use Date::Holidays::FR;
   my ($year, $month, $day) = (localtime)[5, 4, 3];
   $year  += 1900;
-  $month += 1;
+  $month +=    1;
   print "Woohoo" if is_fr_holiday($year, $month, $day);
 
   my ($month, $day) = get_easter($year);
@@ -95,7 +95,7 @@ Date::Holidays::FR - Determine French holidays
 
 is_fr_holiday method return true value when the day is holiday.
 
-There is 11 holidays in France:
+There are 11 holidays in France:
 
 =over 4
 
@@ -105,11 +105,11 @@ There is 11 holidays in France:
 
 =item * 1er mai : Fête du travail
 
-=item * 8 mai : Armistice 39-45
+=item * 8 mai : Armistice 1939-1945
 
 =item * Ascension
 
-=item * Pentecôte
+=item * Lundi de Pentecôte
 
 =item * 14 juillet : Fête nationale
 
@@ -117,7 +117,7 @@ There is 11 holidays in France:
 
 =item * 1er novembre : Toussaint
 
-=item * 11 novembre : Armistice 14-18
+=item * 11 novembre : Armistice 1914-1918
 
 =item * 25 décembre : Noël
 
@@ -127,14 +127,14 @@ Easter is computed with Date::Easter module.
 
 Ascension is 39 days after easter.
 
-Pentecost is 50 days after easter.
+Pentecost monday is 50 days after easter.
 
 =head1 SUBROUTINES
 
 =head2 is_fr_holiday($year, $month, $day)
 
-Returns the name of the holiday in french that falls on the given day, or undef
-if there is none.
+Returns the name of the holiday in french that falls on the given day,
+or undef if there is none.
 
 =head2 get_easter($year)
 
@@ -150,11 +150,13 @@ Returns the month and day of pentecost day for the given year.
 
 =head1 REQUESTS & BUGS
 
-Please report any requests, suggestions or bugs via the RT bug-tracking system 
-at http://rt.cpan.org/ or email to bug-Date-Holidays-FR\@rt.cpan.org. 
+Please  report   any  requests,  suggestions   or  bugs  via   the  RT
+bug-tracking   system   at   L<https://rt.cpan.org/>   or   email   to
+bug-Date-Holidays-FR\@rt.cpan.org.
 
-http://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays-FR is the RT queue for Date::Holidays::FR.
-Please check to see if your bug has already been reported. 
+L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays-FR>  is  the
+RT queue for  Date::Holidays::FR. Please check to see if  your bug has
+already been reported.
 
 =head1 LICENSE
 
@@ -186,6 +188,6 @@ write to the Free Software Foundation, Inc., L<https://fsf.org>.
 
 =head1 SEE ALSO
 
-perl(1), Date::Holidays::UK, Date::Holidays::DE.
+perl(1), L<Date::Holidays::UK>, L<Date::Holidays::DE>.
 
 =cut
