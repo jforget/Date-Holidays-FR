@@ -156,7 +156,7 @@ at http://rt.cpan.org/ or email to bug-Date-Holidays-FR\@rt.cpan.org.
 http://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays-FR is the RT queue for Date::Holidays::FR.
 Please check to see if your bug has already been reported. 
 
-=head1 Copyright
+=head1 LICENSE
 
 Copyright ©  2004, 2019 Fabien  Potencier and Jean Forget.  All rights
 reserved.  This program  is  free software;  you  can redistribute  it

@@ -35,10 +35,26 @@ WriteMakefile(
         'Date::Easter' => 0,
     },
     'LICENSE'           => 'perl',
-    ($] >= 5.005 ?
-      (ABSTRACT_FROM  => 'lib/Date/Holidays/FR.pm',
-       AUTHOR         => [   'Fabien POTENCIER <fabpot@cpan.org>'
-                           , 'Jean Forget <JFORGET@cpan.org>' 
-                         ])
-    : ()),
+    ABSTRACT_FROM  => 'lib/Date/Holidays/FR.pm',
+    AUTHOR         => [   'Fabien POTENCIER <fabpot@cpan.org>'
+                        , 'Jean Forget <JFORGET@cpan.org>' 
+                      ],
+    'MIN_PERL_VERSION' => '5.5.0',
+    META_MERGE       => {
+       dynamic_config => 0,
+       provides       => {
+           'Date::Holidays::FR' => {
+                file    => 'lib/Date/Holidays/FR.pm'
+              , version => '0.03'
+           },
+       },
+       'meta-spec' => { version => 2 },
+       resources => {
+           repository => {
+               type => 'git',
+               url  => 'https://github.com/jforget/Date-Holidays-FR.git',
+               web  => 'https://github.com/jforget/Date-Holidays-FR',
+           },
+       },
+    },
 );
