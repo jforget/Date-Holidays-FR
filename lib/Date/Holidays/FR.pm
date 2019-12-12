@@ -8,57 +8,57 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(is_fr_holiday);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub get_easter {
-	my ($year) = @_;
+        my ($year) = @_;
 
-	return Date::Easter::easter($year);
+        return Date::Easter::easter($year);
 }
 
 sub get_ascension {
-	my ($year) = @_;
+        my ($year) = @_;
 
-	return _compute_date_from_easter($year, 39);
+        return _compute_date_from_easter($year, 39);
 }
 
 sub get_pentecost {
-	my ($year) = @_;
+        my ($year) = @_;
 
-	return _compute_date_from_easter($year, 50);
+        return _compute_date_from_easter($year, 50);
 }
 
 sub _compute_date_from_easter {
-	my ($year, $delta) = @_;
+        my ($year, $delta) = @_;
 
-	my ($easter_month, $easter_day) = get_easter($year);
-	my $easter_date = Time::Local::timelocal(0, 0, 1, $easter_day, $easter_month - 1, $year - 1900);
-	my ($date_month, $date_day) = (localtime($easter_date + $delta * 86400))[4, 3];
-	$date_month++;
+        my ($easter_month, $easter_day) = get_easter($year);
+        my $easter_date = Time::Local::timelocal(0, 0, 1, $easter_day, $easter_month - 1, $year - 1900);
+        my ($date_month, $date_day) = (localtime($easter_date + $delta * 86400))[4, 3];
+        $date_month++;
 
-	return ($date_month, $date_day);
+        return ($date_month, $date_day);
 }
 
 sub is_fr_holiday {
-	my ($year, $month, $day) = @_;
+        my ($year, $month, $day) = @_;
 
-	if ($day == 1 and $month == 1) { return "Nouvel an"; }
-	elsif ($day == 1 and $month == 5) { return "Fête du travail"; }
-	elsif ($day == 8 and $month == 5) { return "Armistice 39-45"; }
-	elsif ($day == 14 and $month == 7) { return "Fête nationale"; }
-	elsif ($day == 15 and $month == 8) { return "Assomption"; }
-	elsif ($day == 1 and $month == 11) { return "Toussaint"; }
-	elsif ($day == 11 and $month == 11) { return "Armistice 14-18"; }
-	elsif ($day == 25 and $month == 12) { return "Noël"; }
-	else {
-		my ($easter_month, $easter_day) = get_easter($year);
-		my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
-		my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
+        if ($day == 1 and $month == 1) { return "Nouvel an"; }
+        elsif ($day == 1 and $month == 5) { return "FÃªte du travail"; }
+        elsif ($day == 8 and $month == 5) { return "Armistice 39-45"; }
+        elsif ($day == 14 and $month == 7) { return "FÃªte nationale"; }
+        elsif ($day == 15 and $month == 8) { return "Assomption"; }
+        elsif ($day == 1 and $month == 11) { return "Toussaint"; }
+        elsif ($day == 11 and $month == 11) { return "Armistice 14-18"; }
+        elsif ($day == 25 and $month == 12) { return "NoÃ«l"; }
+        else {
+                my ($easter_month, $easter_day) = get_easter($year);
+                my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
+                my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
 
-		if ($day == ($easter_day + 1) and $month == $easter_month) { return "Lundi de pâques"; }
-		elsif ($day == $ascension_day and $month == $ascension_month) { return "Ascension"; }
-		elsif ($day == $pentecost_day and $month == $pentecost_month) { return "Pentecôte"; }
-	}
+                if ($day == ($easter_day + 1) and $month == $easter_month) { return "Lundi de pÃ¢ques"; }
+                elsif ($day == $ascension_day and $month == $ascension_month) { return "Ascension"; }
+                elsif ($day == $pentecost_day and $month == $pentecost_month) { return "PentecÃ´te"; }
+        }
 }
 
 1;
@@ -91,25 +91,25 @@ There is 11 holidays in France:
 
 =item * 1er janvier : Nouvel an
 
-=item * Lundi de Pâques
+=item * Lundi de PÃ¢ques
 
-=item * 1er mai : Fête du travail
+=item * 1er mai : FÃªte du travail
 
 =item * 8 mai : Armistice 39-45
 
 =item * Ascension
 
-=item * Pentecôte
+=item * PentecÃ´te
 
-=item * 14 juillet : Fête nationale
+=item * 14 juillet : FÃªte nationale
 
-=item * 15 août : Assomption
+=item * 15 aoÃ»t : Assomption
 
 =item * 1er novembre : Toussaint
 
 =item * 11 novembre : Armistice 14-18
 
-=item * 25 décembre : Noël
+=item * 25 dÃ©cembre : NoÃ«l
 
 =back
 
