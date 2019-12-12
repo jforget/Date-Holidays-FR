@@ -1,5 +1,13 @@
+# -*- encoding: utf-8; indent-tabs-mode: nil -*-
+#
+#     Perl module to compute the French holidays in a given year.
+#     Copyright © 2004, 2019 Fabien Potencier and Jean Forget, all rights reserved
+#
+#     See the license in the embedded documentation below.
+#
 package Date::Holidays::FR;
 
+use utf8;
 use strict;
 use warnings;
 use Time::Local;
@@ -64,6 +72,8 @@ sub is_fr_holiday {
 1;
 
 __END__
+
+=encoding utf-8
 
 =head1 NAME
 
@@ -146,14 +156,33 @@ at http://rt.cpan.org/ or email to bug-Date-Holidays-FR\@rt.cpan.org.
 http://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays-FR is the RT queue for Date::Holidays::FR.
 Please check to see if your bug has already been reported. 
 
-=head1 COPYRIGHT
+=head1 Copyright
 
-Copyright 2004
+Copyright ©  2004, 2019 Fabien  Potencier and Jean Forget.  All rights
+reserved.  This program  is  free software;  you  can redistribute  it
+and/or  modify it  under the  same terms  as Perl  itself: GNU  Public
+License version 1 or later and Perl Artistic License.
 
-Fabien Potencier, fabpot@cpan.org
+The full text of the license can be found in the F<LICENSE> file
+included with this module or at
+L<https://dev.perl.org/licenses/artistic.html>
+and L<https://www.gnu.org/licenses/gpl-1.0.html>.
 
-This software may be freely copied and distributed under the same
-terms and conditions as Perl.
+Here is the summary of GPL:
+
+This program is  free software; you can redistribute  it and/or modify
+it under the  terms of the GNU General Public  License as published by
+the Free  Software Foundation; either  version 1, or (at  your option)
+any later version.
+
+This program  is distributed in the  hope that it will  be useful, but
+WITHOUT   ANY  WARRANTY;   without  even   the  implied   warranty  of
+MERCHANTABILITY  or FITNESS  FOR A  PARTICULAR PURPOSE.   See  the GNU
+General Public License for more details.
+
+You  should have received  a copy  of the  GNU General  Public License
+along with this program; if not, see <https://www.gnu.org/licenses/> or
+write to the Free Software Foundation, Inc., L<https://fsf.org>.
 
 =head1 SEE ALSO
 
