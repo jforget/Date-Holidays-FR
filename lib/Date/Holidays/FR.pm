@@ -52,11 +52,11 @@ sub is_fr_holiday {
 
         if    ($day ==  1 and $month ==  1) { return "Nouvel an"; }
         elsif ($day ==  1 and $month ==  5) { return "Fête du travail"; }
-        elsif ($day ==  8 and $month ==  5) { return "Armistice 39-45"; }
+        elsif ($day ==  8 and $month ==  5) { return "Armistice 1939-1945"; }
         elsif ($day == 14 and $month ==  7) { return "Fête nationale"; }
         elsif ($day == 15 and $month ==  8) { return "Assomption"; }
         elsif ($day ==  1 and $month == 11) { return "Toussaint"; }
-        elsif ($day == 11 and $month == 11) { return "Armistice 14-18"; }
+        elsif ($day == 11 and $month == 11) { return "Armistice 1914-1918"; }
         elsif ($day == 25 and $month == 12) { return "Noël"; }
         else {
                 my ($easter_month,    $easter_day)    = _compute_date_from_easter($year,  1);
@@ -69,7 +69,10 @@ sub is_fr_holiday {
         }
 }
 
-1;
+# And instead of a plain, boring "1" to end the module source, let us
+# celebrate the 14th of July, closely associated with the Bastille:
+"À la Bastille on l'aime bien Nini Peau-d'chien,
+ Elle est si douce et si gentille !";
 
 __END__
 
