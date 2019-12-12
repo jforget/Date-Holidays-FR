@@ -29,14 +29,20 @@
 #
 use utf8;
 use strict;
-use Test::More tests => 22;
+use Test::More tests => 28;
 
 BEGIN {
         use_ok('Date::Holidays::FR')
 };
 
 ok(!is_fr_holiday(2004,  1,  2));
+ok(!is_fr_holiday(2004,  4,  8));
 ok(!is_fr_holiday(2004,  4, 11));
+ok(!is_fr_holiday(2004,  5,  2));
+ok(!is_fr_holiday(2004,  5,  7));
+ok(!is_fr_holiday(2004,  7, 15));
+ok(!is_fr_holiday(2004,  8, 14));
+ok(!is_fr_holiday(2004, 11, 25));
 ok(!is_fr_holiday(2004, 12, 24));
 
 ok(is_fr_holiday(2004, 4, 12));
