@@ -50,20 +50,20 @@ sub _compute_date_from_easter {
 sub is_fr_holiday {
         my ($year, $month, $day) = @_;
 
-        if ($day == 1 and $month == 1) { return "Nouvel an"; }
-        elsif ($day == 1 and $month == 5) { return "Fête du travail"; }
-        elsif ($day == 8 and $month == 5) { return "Armistice 39-45"; }
-        elsif ($day == 14 and $month == 7) { return "Fête nationale"; }
-        elsif ($day == 15 and $month == 8) { return "Assomption"; }
-        elsif ($day == 1 and $month == 11) { return "Toussaint"; }
+        if    ($day ==  1 and $month ==  1) { return "Nouvel an"; }
+        elsif ($day ==  1 and $month ==  5) { return "Fête du travail"; }
+        elsif ($day ==  8 and $month ==  5) { return "Armistice 39-45"; }
+        elsif ($day == 14 and $month ==  7) { return "Fête nationale"; }
+        elsif ($day == 15 and $month ==  8) { return "Assomption"; }
+        elsif ($day ==  1 and $month == 11) { return "Toussaint"; }
         elsif ($day == 11 and $month == 11) { return "Armistice 14-18"; }
         elsif ($day == 25 and $month == 12) { return "Noël"; }
         else {
-                my ($easter_month, $easter_day) = get_easter($year);
+                my ($easter_month,    $easter_day)    = _compute_date_from_easter($year,  1);
                 my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
                 my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
 
-                if ($day == ($easter_day + 1) and $month == $easter_month) { return "Lundi de pâques"; }
+                if    ($day == $easter_day    and $month == $easter_month   ) { return "Lundi de pâques"; }
                 elsif ($day == $ascension_day and $month == $ascension_month) { return "Ascension"; }
                 elsif ($day == $pentecost_day and $month == $pentecost_month) { return "Pentecôte"; }
         }
