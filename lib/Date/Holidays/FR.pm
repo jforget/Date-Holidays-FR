@@ -71,8 +71,14 @@ sub is_fr_holiday {
 
 # And instead of a plain, boring "1" to end the module source, let us
 # celebrate the 14th of July, closely associated with the Bastille:
-"À la Bastille on l'aime bien Nini Peau-d'chien,
- Elle est si douce et si gentille !";
+
+"-- À la Bastille on l'aime bien Nini Peau-d'chien,
+    Elle est si douce et si gentille !
+    On l'aime bien...
+ -- QUI ÇA ?
+ -- Nini Peau-d'chien...
+ -- OÙ ÇA ?
+ -- À la Basti-i-ille";
 
 __END__
 
@@ -126,11 +132,11 @@ There are 11 holidays in France:
 
 =back
 
-Easter is computed with Date::Easter module.
+Easter is computed with L<Date::Easter> module.
 
-Ascension is 39 days after easter.
+Ascension is 39 days after Easter.
 
-Pentecost monday is 50 days after easter.
+Pentecost monday is 50 days after Easter.
 
 =head1 SUBROUTINES
 
@@ -151,7 +157,7 @@ Returns the month and day of ascension day for the given year.
 
 Returns the month and day of pentecost day for the given year.
 
-=head1 REQUESTS & BUGS
+=head1 SUPPORT
 
 Please  report   any  requests,  suggestions   or  bugs  via   the  RT
 bug-tracking   system   at   L<https://rt.cpan.org/>   or   email   to
@@ -160,6 +166,15 @@ bug-Date-Holidays-FR\@rt.cpan.org.
 L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays-FR>  is  the
 RT queue for  Date::Holidays::FR. Please check to see if  your bug has
 already been reported.
+
+Or you  can go to  L<https://github.com/jforget/Date-Holidays-FR>, and
+submit a pull request.
+
+=head1 AUTHORS
+
+Module creator: Fabien Potencier
+
+Current maintainer: Jean Forget (JFORGET at cpan dot org)
 
 =head1 LICENSE
 
