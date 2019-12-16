@@ -33,13 +33,19 @@ WriteMakefile(
     PREREQ_PM         => {
         'Time::Local'  => 0,
         'Date::Easter' => 0,
+        'strict'       => 0,
+        'warnings'     => 0,
     },
     'LICENSE'           => 'perl',
     ABSTRACT_FROM  => 'lib/Date/Holidays/FR.pm',
     AUTHOR         => [   'Fabien POTENCIER <fabpot@cpan.org>'
                         , 'Jean Forget <JFORGET@cpan.org>' 
                       ],
-    'MIN_PERL_VERSION' => '5.5.0',
+    'MIN_PERL_VERSION' => '5.6.0', # because of use utf8
+    BUILD_REQUIRES => {       # should be 'TEST_REQUIRES', except that ExtUtils::MakeMaker 6.5705 does not accept it
+        'Test::More'          => '0'
+      , 'ExtUtils::MakeMaker' => '6.57_02' # the first version to accept several authors in an arrayref
+                           },
     META_MERGE       => {
        dynamic_config => 0,
        provides       => {
