@@ -1,6 +1,6 @@
 Revision history for Perl extension Date::Holidays::FR.
 
-0.03 2019-12-xx
+0.03 2019-12-16
         - clean up the distribution to improve kwalitee
         - charset issues: replacing tabs by spaces, CRLF by LF, ISO-8859 by UTF-8
         - fix RT ticket 122022: Easter monday when Easter sunday is 31st March.
