@@ -16,7 +16,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(is_fr_holiday);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub get_easter {
         my ($year) = @_;
