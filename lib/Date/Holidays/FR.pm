@@ -63,9 +63,9 @@ sub is_fr_holiday {
                 my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
                 my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
 
-                if    ($day == $easter_day    and $month == $easter_month   ) { return "Lundi de pâques"; }
+                if    ($day == $easter_day    and $month == $easter_month   ) { return "Lundi de Pâques"; }
                 elsif ($day == $ascension_day and $month == $ascension_month) { return "Ascension"; }
-                elsif ($day == $pentecost_day and $month == $pentecost_month) { return "Pentecôte"; }
+                elsif ($day == $pentecost_day and $month == $pentecost_month) { return "Lundi de Pentecôte"; }
         }
 }
 
