@@ -4,7 +4,9 @@ Date-Holidays-FR
 INSTALLATION
 ............
 
-To install this module type the following:
+To install this module, use the CPAN shell or cpanminus
+
+Or you can type the following:
 
    perl Makefile.PL
    make
