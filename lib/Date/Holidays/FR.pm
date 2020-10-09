@@ -14,7 +14,7 @@ use Time::Local;
 use Date::Easter;
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(is_fr_holiday);
+our @EXPORT = qw(is_fr_holiday is_holiday holidays fr_holidays);
 
 our $VERSION = '0.04';
 
@@ -47,6 +47,10 @@ sub _compute_date_from_easter {
         return ($date_month, $date_day);
 }
 
+sub is_holiday {
+    return is_fr_holiday(@_);
+}
+
 sub is_fr_holiday {
         my ($year, $month, $day) = @_;
 
@@ -67,6 +71,47 @@ sub is_fr_holiday {
                 elsif ($day == $ascension_day and $month == $ascension_month) { return "Ascension"; }
                 elsif ($day == $pentecost_day and $month == $pentecost_month) { return "Lundi de Pentecôte"; }
         }
+}
+
+sub holidays {
+    return fr_holidays(shift);
+}
+
+sub fr_holidays {
+        my $year = shift;
+
+        my $holidays = {};
+
+        my @dates = qw(
+            0101
+            0501
+            0508
+            0714
+            0815
+            1101
+            1111
+            1225
+        );
+
+        my ($easter_month,    $easter_day)    = _compute_date_from_easter($year,  1);
+        my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
+        my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
+
+        push @dates, (sprintf('%02d', $easter_month) . sprintf('%02d', $easter_day));
+        push @dates, (sprintf('%02d', $ascension_month) . sprintf('%02d', $ascension_day));
+        push @dates, (sprintf('%02d', $pentecost_month) . sprintf('%02d', $pentecost_day));
+
+        foreach my $date (@dates) {
+            my ($month, $day) = $date =~ m/(\d{2})(\d{2})/;
+
+            my $holiday = is_fr_holiday($year, $month, $day);
+
+            if ($holiday) {
+                $holidays->{$date} = $holiday;
+            }
+        };
+
+        return $holidays;
 }
 
 # And instead of a plain, boring "1" to end the module source, let us
