@@ -52,25 +52,12 @@ sub is_holiday {
 }
 
 sub is_fr_holiday {
-        my ($year, $month, $day) = @_;
+    my ($year, $month, $day) = @_;
 
-        if    ($day ==  1 and $month ==  1) { return "Nouvel an"; }
-        elsif ($day ==  1 and $month ==  5) { return "Fête du travail"; }
-        elsif ($day ==  8 and $month ==  5) { return "Armistice 1939-1945"; }
-        elsif ($day == 14 and $month ==  7) { return "Fête nationale"; }
-        elsif ($day == 15 and $month ==  8) { return "Assomption"; }
-        elsif ($day ==  1 and $month == 11) { return "Toussaint"; }
-        elsif ($day == 11 and $month == 11) { return "Armistice 1914-1918"; }
-        elsif ($day == 25 and $month == 12) { return "Noël"; }
-        else {
-                my ($easter_month,    $easter_day)    = _compute_date_from_easter($year,  1);
-                my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
-                my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
+    my $date = sprintf('%02d', $month) . sprintf('%02d', $day);
+    my $dates = _get_dates($year);
 
-                if    ($day == $easter_day    and $month == $easter_month   ) { return "Lundi de Pâques"; }
-                elsif ($day == $ascension_day and $month == $ascension_month) { return "Ascension"; }
-                elsif ($day == $pentecost_day and $month == $pentecost_month) { return "Lundi de Pentecôte"; }
-        }
+    return $dates->{$date} || 0;
 }
 
 sub holidays {
@@ -82,26 +69,9 @@ sub fr_holidays {
 
         my $holidays = {};
 
-        my @dates = qw(
-            0101
-            0501
-            0508
-            0714
-            0815
-            1101
-            1111
-            1225
-        );
+        my $dates = _get_dates($year);
 
-        my ($easter_month,    $easter_day)    = _compute_date_from_easter($year,  1);
-        my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
-        my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
-
-        push @dates, (sprintf('%02d', $easter_month) . sprintf('%02d', $easter_day));
-        push @dates, (sprintf('%02d', $ascension_month) . sprintf('%02d', $ascension_day));
-        push @dates, (sprintf('%02d', $pentecost_month) . sprintf('%02d', $pentecost_day));
-
-        foreach my $date (@dates) {
+        foreach my $date (keys %{$dates}) {
             my ($month, $day) = $date =~ m/(\d{2})(\d{2})/;
 
             my $holiday = is_fr_holiday($year, $month, $day);
@@ -112,6 +82,31 @@ sub fr_holidays {
         };
 
         return $holidays;
+}
+
+sub _get_dates {
+    my $year = shift;
+
+    my $dates = {
+        '0101' => 'Nouvel an',
+        '0501' => 'Fête du travail',
+        '0508' => 'Armistice 1939-1945',
+        '0714' => 'Fête nationale',
+        '0815' => 'Assomption',
+        '1101' => 'Toussaint',
+        '1111' => 'Armistice 1914-1918',
+        '1225' => 'Noël',
+    };
+
+    my ($easter_month,    $easter_day)    = _compute_date_from_easter($year,  1);
+    my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
+    my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
+
+    $dates->{sprintf('%02d', $easter_month) . sprintf('%02d', $easter_day)} = 'Lundi de Pâques';
+    $dates->{sprintf('%02d', $ascension_month) . sprintf('%02d', $ascension_day)} = 'Ascension';
+    $dates->{sprintf('%02d', $pentecost_month) . sprintf('%02d', $pentecost_day)} = 'Lundi de Pentecôte';
+
+    return $dates;
 }
 
 # And instead of a plain, boring "1" to end the module source, let us
