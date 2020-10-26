@@ -54,7 +54,7 @@ sub is_holiday {
 sub is_fr_holiday {
     my ($year, $month, $day) = @_;
 
-    my $date = sprintf('%02d', $month) . sprintf('%02d', $day);
+    my $date = _format_segment($month) . _format_segment($day);
     my $dates = _get_dates($year);
 
     return $dates->{$date} || 0;
@@ -102,11 +102,15 @@ sub _get_dates {
     my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
     my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
 
-    $dates->{sprintf('%02d', $easter_month) . sprintf('%02d', $easter_day)} = 'Lundi de Pâques';
-    $dates->{sprintf('%02d', $ascension_month) . sprintf('%02d', $ascension_day)} = 'Ascension';
-    $dates->{sprintf('%02d', $pentecost_month) . sprintf('%02d', $pentecost_day)} = 'Lundi de Pentecôte';
+    $dates->{_format_segment($easter_month) . _format_segment($easter_day)} = 'Lundi de Pâques';
+    $dates->{_format_segment($ascension_month) . _format_segment($ascension_day)} = 'Ascension';
+    $dates->{_format_segment($pentecost_month) . _format_segment($pentecost_day)} = 'Lundi de Pentecôte';
 
     return $dates;
+}
+
+sub _format_segment {
+    return sprintf('%02d', shift);
 }
 
 # And instead of a plain, boring "1" to end the module source, let us
