@@ -35,11 +35,12 @@ WriteMakefile(
         'Date::Easter' => 0,
         'strict'       => 0,
         'warnings'     => 0,
+        'Readonly'     => 0,
     },
     'LICENSE'           => 'perl',
     ABSTRACT_FROM  => 'lib/Date/Holidays/FR.pm',
     AUTHOR         => [   'Fabien POTENCIER <fabpot@cpan.org>'
-                        , 'Jean Forget <JFORGET@cpan.org>' 
+                        , 'Jean Forget <JFORGET@cpan.org>'
                       ],
     'MIN_PERL_VERSION' => '5.6.0', # because of use utf8
     BUILD_REQUIRES => {       # should be 'TEST_REQUIRES', except that ExtUtils::MakeMaker 6.5705 does not accept it

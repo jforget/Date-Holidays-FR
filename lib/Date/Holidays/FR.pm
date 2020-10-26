@@ -12,11 +12,18 @@ use strict;
 use warnings;
 use Time::Local;
 use Date::Easter;
+use Readonly;
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(is_fr_holiday is_holiday holidays fr_holidays);
 
 our $VERSION = '0.04';
+
+Readonly::Scalar my $easter_offset    => 1;
+Readonly::Scalar my $ascension_offset => 39;
+Readonly::Scalar my $pentecost_offset => 50;
+Readonly::Scalar my $seconds_in_day   => 60 * 60 * 24;
+Readonly::Scalar my $false            => 0;
 
 sub get_easter {
         my ($year) = @_;
@@ -27,13 +34,13 @@ sub get_easter {
 sub get_ascension {
         my ($year) = @_;
 
-        return _compute_date_from_easter($year, 39);
+        return _compute_date_from_easter($year, $ascension_offset);
 }
 
 sub get_pentecost {
         my ($year) = @_;
 
-        return _compute_date_from_easter($year, 50);
+        return _compute_date_from_easter($year, $pentecost_offset);
 }
 
 sub _compute_date_from_easter {
@@ -41,7 +48,7 @@ sub _compute_date_from_easter {
 
         my ($easter_month, $easter_day) = get_easter($year);
         my $easter_date = Time::Local::timelocal(0, 0, 1, $easter_day, $easter_month - 1, $year - 1900);
-        my ($date_month, $date_day) = (localtime($easter_date + $delta * 86400))[4, 3];
+        my ($date_month, $date_day) = (localtime($easter_date + $delta * $seconds_in_day))[4, 3];
         $date_month++;
 
         return ($date_month, $date_day);
@@ -57,7 +64,7 @@ sub is_fr_holiday {
     my $date = _format_segment($month) . _format_segment($day);
     my $dates = _get_dates($year);
 
-    return $dates->{$date} || 0;
+    return $dates->{$date} || $false;
 }
 
 sub holidays {
@@ -98,9 +105,9 @@ sub _get_dates {
         '1225' => 'Noël',
     };
 
-    my ($easter_month,    $easter_day)    = _compute_date_from_easter($year,  1);
-    my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, 39);
-    my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, 50);
+    my ($easter_month,    $easter_day)    = _compute_date_from_easter($year, $easter_offset);
+    my ($ascension_month, $ascension_day) = _compute_date_from_easter($year, $ascension_offset);
+    my ($pentecost_month, $pentecost_day) = _compute_date_from_easter($year, $pentecost_offset);
 
     $dates->{_format_segment($easter_month) . _format_segment($easter_day)} = 'Lundi de Pâques';
     $dates->{_format_segment($ascension_month) . _format_segment($ascension_day)} = 'Ascension';
