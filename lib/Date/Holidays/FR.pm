@@ -25,6 +25,9 @@ Readonly::Scalar my $pentecost_offset => 50;
 Readonly::Scalar my $seconds_in_day   => 60 * 60 * 24;
 Readonly::Scalar my $false            => 0;
 
+Readonly::Scalar my $localtime_month_idx        => 4;
+Readonly::Scalar my $localtime_day_in_month_idx => 3;
+
 sub get_easter {
         my ($year) = @_;
 
@@ -48,7 +51,7 @@ sub _compute_date_from_easter {
 
         my ($easter_month, $easter_day) = get_easter($year);
         my $easter_date = timelocal_modern(0, 0, 1, $easter_day, $easter_month - 1, $year);
-        my ($date_month, $date_day) = (localtime($easter_date + $delta * $seconds_in_day))[4, 3];
+        my ($date_month, $date_day) = (localtime($easter_date + $delta * $seconds_in_day))[$localtime_month_idx, $localtime_day_in_month_idx];
         $date_month++;
 
         return ($date_month, $date_day);
