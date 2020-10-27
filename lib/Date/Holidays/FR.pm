@@ -10,7 +10,7 @@ package Date::Holidays::FR;
 use utf8;
 use strict;
 use warnings;
-use Time::Local;
+use Time::Local qw(timelocal_modern);
 use Date::Easter;
 use Readonly;
 use Exporter;
@@ -47,7 +47,7 @@ sub _compute_date_from_easter {
         my ($year, $delta) = @_;
 
         my ($easter_month, $easter_day) = get_easter($year);
-        my $easter_date = Time::Local::timelocal(0, 0, 1, $easter_day, $easter_month - 1, $year - 1900);
+        my $easter_date = timelocal_modern(0, 0, 1, $easter_day, $easter_month - 1, $year);
         my ($date_month, $date_day) = (localtime($easter_date + $delta * $seconds_in_day))[4, 3];
         $date_month++;
 
