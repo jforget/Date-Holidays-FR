@@ -194,14 +194,26 @@ Pentecost monday is 50 days after Easter.
 
 =head1 SUBROUTINES
 
-=head2 is_fr_holiday($year, $month, $day)
+=head2 is_fr_holiday($year, $month, $day), is_holiday($year, $month, $day)
 
 Returns the name of the holiday in french that falls on the given day,
-or undef if there is none.
+or a false value if there is none.
+
+C<is_holiday> is  an alias of  C<is_fr_holiday> to be  compatible with
+the naming conventions of L<Date::Holidays>.
+
+=head2 fr_holidays($year), holidays($year)
+
+Returns a hashref containing all  the holidays for the requested year.
+Keys are the dates in C<MMDD> format, values are French labels for the
+holidays.
+
+C<holidays> is  an alias of  C<fr_holidays> to be compatible  with the
+naming conventions of L<Date::Holidays>.
 
 =head2 get_easter($year)
 
-Returns the month and day of easter day for the given year.
+Returns the month and day of easter monday for the given year.
 
 =head2 get_ascension($year)
 
@@ -209,7 +221,26 @@ Returns the month and day of ascension day for the given year.
 
 =head2 get_pentecost($year)
 
-Returns the month and day of pentecost day for the given year.
+Returns the month and day of pentecost monday for the given year.
+
+=head1 BUGS AND ISSUES
+
+No known bugs.
+
+On rare instances  (last one was in  1913, next one will  be on 2160),
+the Ascension falls on 1st May, same day as the I<Fête du Travail>. In
+this case,  the C<fr_holidays>  (or C<holidays>) subroutine  refers to
+this date as Ascension, not as I<Fête du Travail>.
+
+Likewise, on  some years the Ascension  falls on 8th May,  same day as
+I<Armistice 1939-1945>.  As above,  the Ascension takes  precedence on
+the Armistice. This  conflict is much more frequent  than the conflict
+with 1st May. For example, it occurred in 1975, 1986 and 1997, it will
+occur again in 2070, 2081 and 2092.
+
+This behaviour is subject to change,  in future releases the I<Fête du
+Travail> or I<Armistice 1939-1945>  might preempt Ascension instead of
+the other way around.
 
 =head1 SUPPORT
 
@@ -222,6 +253,11 @@ submit a pull request.
 Module creator: Fabien Potencier
 
 Current maintainer: Jean Forget (JFORGET at cpan dot org)
+
+=head2 Thanks
+
+Many  thanks to  JONASBN,  for maintaining  L<Date::Holidays> and  for
+suggesting some cleanup of the code.
 
 =head1 LICENSE
 
@@ -253,6 +289,6 @@ or contact the Free Software Foundation, Inc., L<https://fsf.org>.
 
 =head1 SEE ALSO
 
-perl(1), L<Date::Holidays::UK>, L<Date::Holidays::DE>.
+perl(1), L<Date::Holidays>, L<Date::Holidays::UK>, L<Date::Holidays::DE>.
 
 =cut
