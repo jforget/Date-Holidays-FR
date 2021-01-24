@@ -2,7 +2,7 @@
 #
 #     t/utf-8.t
 #     Test script for Date::Holidays::FR
-#     Copyright © 2019 Fabien Potencier and Jean Forget, all rights reserved
+#     Copyright (c) 2019, 2021 Fabien Potencier and Jean Forget, all rights reserved
 #
 #     This program is distributed under the same terms as Perl:
 #     GNU Public License version 1 or later and Perl Artistic License

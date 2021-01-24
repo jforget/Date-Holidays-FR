@@ -1,6 +1,6 @@
 #
 #     Configuration script for Date::Holidays::FR
-#     Copyright © 2004, 2019 Fabien Potencier and Jean Forget, all rights reserved
+#     Copyright (c) 2004, 2019, 2021 Fabien Potencier and Jean Forget, all rights reserved
 #
 #     This program is distributed under the same terms as Perl 5.16.3:
 #     GNU Public License version 1 or later and Perl Artistic License
@@ -31,7 +31,7 @@ WriteMakefile(
     NAME              => 'Date::Holidays::FR',
     VERSION_FROM      => 'lib/Date/Holidays/FR.pm',
     PREREQ_PM         => {
-        'Time::Local'  => 0,
+        'Time::Local'  => 1.28,
         'Date::Easter' => 0,
         'strict'       => 0,
         'warnings'     => 0,
@@ -61,6 +61,9 @@ WriteMakefile(
                type => 'git',
                url  => 'https://github.com/jforget/Date-Holidays-FR.git',
                web  => 'https://github.com/jforget/Date-Holidays-FR',
+           },
+           bugtracker => {
+               web  => 'https://github.com/jforget/Date-Holidays-FR/issues',
            },
        },
     },

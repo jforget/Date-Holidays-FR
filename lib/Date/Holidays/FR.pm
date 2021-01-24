@@ -1,7 +1,7 @@
 # -*- encoding: utf-8; indent-tabs-mode: nil -*-
 #
 #     Perl module to compute the French holidays in a given year.
-#     Copyright © 2004, 2019 Fabien Potencier and Jean Forget, all rights reserved
+#     Copyright (c) 2004, 2019, 2021 Fabien Potencier and Jean Forget, all rights reserved
 #
 #     See the license in the embedded documentation below.
 #
@@ -213,15 +213,8 @@ Returns the month and day of pentecost day for the given year.
 
 =head1 SUPPORT
 
-Please  report   any  requests,  suggestions   or  bugs  via   the  RT
-bug-tracking   system   at   L<https://rt.cpan.org/>   or   email   to
-bug-Date-Holidays-FR\@rt.cpan.org.
-
-L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays-FR>  is  the
-RT queue for  Date::Holidays::FR. Please check to see if  your bug has
-already been reported.
-
-Or you  can go to  L<https://github.com/jforget/Date-Holidays-FR>, and
+Please  report any  requests, suggestions  or bugs  via Github.  Go to
+L<https://github.com/jforget/Date-Holidays-FR>, and create an issue or
 submit a pull request.
 
 =head1 AUTHORS
@@ -232,9 +225,9 @@ Current maintainer: Jean Forget (JFORGET at cpan dot org)
 
 =head1 LICENSE
 
-Copyright ©  2004, 2019 Fabien  Potencier and Jean Forget.  All rights
-reserved.  This program  is  free software;  you  can redistribute  it
-and/or  modify it  under the  same terms  as Perl  itself: GNU  Public
+Copyright (c) 2004,  2019, 2021 Fabien Potencier and  Jean Forget. All
+rights reserved. This  program is free software;  you can redistribute
+it and/or  modify it under the  same terms as Perl  itself: GNU Public
 License version 1 or later and Perl Artistic License.
 
 The full text of the license can be found in the F<LICENSE> file
