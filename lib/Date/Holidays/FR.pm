@@ -199,7 +199,7 @@ Pentecost monday is 50 days after Easter.
 Returns the name of the holiday in french that falls on the given day,
 or a false value if there is none.
 
-C<is_holiday> is  an alias of  C<is_fr_holiday> to be  compatible with
+C<is_holiday> is a wrapper for  C<is_fr_holiday> to be compatible with
 the naming conventions of L<Date::Holidays>.
 
 =head2 fr_holidays($year), holidays($year)
@@ -208,7 +208,7 @@ Returns a hashref containing all  the holidays for the requested year.
 Keys are the dates in C<MMDD> format, values are French labels for the
 holidays.
 
-C<holidays> is  an alias of  C<fr_holidays> to be compatible  with the
+C<holidays> is a wrapper for  C<fr_holidays> to be compatible with the
 naming conventions of L<Date::Holidays>.
 
 =head2 get_easter($year)

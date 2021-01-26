@@ -37,6 +37,7 @@ use Test::More;
 # where the module and the test scripts looked like they were working
 # in UTF-8 and actually they were working in ISO-8859. Checking the
 # string length allow us to be sure they work in UTF-8.
+# https://github.com/jforget/DateTime-Calendar-FrenchRevolutionary/issues/6
                        #             1         2
 my @data = (           #    1...5....0....5....0
         [2013,  1,  1,  9, "Nouvel an"]

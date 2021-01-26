@@ -1,6 +1,7 @@
 Revision history for Perl extension Date::Holidays::FR.
 
-0.04 xxxx
+0.04 2021-xxxx
+        - follow the guidelines for Date::Holidays::XX modules (thanks to JONASBN)
 
 0.03 2019-12-16
         - clean up the distribution to improve kwalitee
