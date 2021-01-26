@@ -154,6 +154,11 @@ Date::Holidays::FR - Determine French holidays
   my ($month, $day) = get_ascension($year);
   my ($month, $day) = get_pentecost($year);
 
+  my $day_off = holidays($year);
+  for my $mmdd (sort keys  %$day_off) {
+    print "$mmdd $day_off->{$mmdd}\n";
+  }
+
 =head1 DESCRIPTION
 
 is_fr_holiday method return true value when the day is holiday.

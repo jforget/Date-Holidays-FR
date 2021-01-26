@@ -2,6 +2,8 @@ Revision history for Perl extension Date::Holidays::FR.
 
 0.04 2021-xxxx
         - follow the guidelines for Date::Holidays::XX modules (thanks to JONASBN)
+	- clean up the code (thanks again JONASBN)
+	- RT sunset: bugtracker is now Github's issues
 
 0.03 2019-12-16
         - clean up the distribution to improve kwalitee
