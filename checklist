@@ -1,0 +1,57 @@
+-*- encoding: utf-8; indent-tabs-mode: nil -*-
+
+See Merijn's checklist:
+https://github.com/Tux/Release-Checklist/blob/master/Checklist.md
+
+Check spaces vs tabs, check encoding, check "use utf8;"
+
+Check version number in:
+-- Makefile.PL
+-- lib/Date/Holidays/FR.pm, $VERSION
+
+Check copyright years in:
+-- Makefile.PL
+-- (2×) lib/Date/Holidays/FR.pm, head comments and POD (=head2 COPYRIGHT)
+-- t/*.t
+
+Check URL, replacing http by https when possible
+
+Check that search.cpan.org and rt.cpan.org are no longer referenced.
+
+Kwalitee: compare with the previous version https://cpants.cpanauthors.org/release/JFORGET/Date-Holidays-FR-0.03
+
+MANIFEST: among others, check that all new test files are mentionned and that removed files no longer appear
+
+Test with all installed perlbrew versions
+
+Coverage: preferably with perlbrew perl-5.28.0
+
+Changes: Type the proper release date for the latest version
+
+Build META.{json,yml} and .tar.gz with perlbrew perl-5.28.0
+
+Checking the *.tar.gz file
+==========================
+
+Check contents of META.{json,yml}:
+  version number (2×)
+  minimum perl version
+  dynamic config 0
+  provides (with version number)
+  prerequisite: strict and warnings
+
+Check installation on a Virtualbox machine
+
+After release
+=============
+
+Github:
+    git tag -m 'Release to CPAN' v0.04
+    git push --tags -u origin master
+
+Change version number in:
+-- Changes
+-- Makefile.PL
+-- lib/Date/Holidays/FR.pm
+-- checklist
+
