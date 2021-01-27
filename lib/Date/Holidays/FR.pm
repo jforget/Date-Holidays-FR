@@ -144,19 +144,27 @@ Date::Holidays::FR - Determine French holidays
 
 =head1 SYNOPSIS
 
+Checking one day
+
   use Date::Holidays::FR;
   my ($year, $month, $day) = (localtime)[5, 4, 3];
   $year  += 1900;
   $month +=    1;
   print "Woohoo" if is_fr_holiday($year, $month, $day);
 
+Computing the mobile days
+
+  use Date::Holidays::FR;
   my ($month, $day) = get_easter($year);
   my ($month, $day) = get_ascension($year);
   my ($month, $day) = get_pentecost($year);
 
-  my $day_off = holidays($year);
-  for my $mmdd (sort keys  %$day_off) {
-    print "$mmdd $day_off->{$mmdd}\n";
+Checking a whole year
+
+  use Date::Holidays::FR;
+  my $days_off = holidays($year);
+  for my $mmdd (sort keys  %$days_off) {
+    print "$mmdd $days_off->{$mmdd}\n";
   }
 
 =head1 DESCRIPTION
@@ -167,27 +175,27 @@ There are 11 holidays in France:
 
 =over 4
 
-=item * 1er janvier : Nouvel an
+=item * 1er janvier : Nouvel an / New Year's Day
 
-=item * Lundi de Pâques
+=item * Lundi de Pâques / Easter Monday
 
-=item * 1er mai : Fête du travail
+=item * 1er mai : Fête du travail / Labour Day
 
 =item * 8 mai : Armistice 1939-1945
 
 =item * Ascension
 
-=item * Lundi de Pentecôte
+=item * Lundi de Pentecôte / Pentecost Monday
 
-=item * 14 juillet : Fête nationale
+=item * 14 juillet : Fête nationale / Bastille Day
 
-=item * 15 août : Assomption
+=item * 15 août : Assomption / Assumption
 
-=item * 1er novembre : Toussaint
+=item * 1er novembre : Toussaint / All Saints' Day
 
 =item * 11 novembre : Armistice 1914-1918
 
-=item * 25 décembre : Noël
+=item * 25 décembre : Noël / Christmas
 
 =back
 
@@ -252,6 +260,11 @@ the other way around.
 Please  report any  requests, suggestions  or bugs  via Github.  Go to
 L<https://github.com/jforget/Date-Holidays-FR>, and create an issue or
 submit a pull request.
+
+If you have no feedback after a week  or so, you can reach me by email
+at JFORGET  at cpan dot org.  Please mention the distribution  name in
+the subject, so  my spam filter and me will  easily dispatch the email
+to the proper folder.
 
 =head1 AUTHORS
 
