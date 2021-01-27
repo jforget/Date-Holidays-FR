@@ -266,6 +266,10 @@ at JFORGET  at cpan dot org.  Please mention the distribution  name in
 the subject, so  my spam filter and me will  easily dispatch the email
 to the proper folder.
 
+On the other hand, I may be on vacation. Do not be upset if the answer
+arrives after one or  two months. Be upset only if  you do not receive
+an answer to several emails over at least one year.
+
 =head1 AUTHORS
 
 Module creator: Fabien Potencier
