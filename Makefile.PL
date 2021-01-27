@@ -52,7 +52,7 @@ WriteMakefile(
        provides       => {
            'Date::Holidays::FR' => {
                 file    => 'lib/Date/Holidays/FR.pm'
-              , version => '0.04'
+              , version => '0.05'
            },
        },
        'meta-spec' => { version => 2 },

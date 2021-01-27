@@ -17,7 +17,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(is_fr_holiday is_holiday holidays fr_holidays);
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 Readonly::Scalar my $easter_offset    => 1;
 Readonly::Scalar my $ascension_offset => 39;

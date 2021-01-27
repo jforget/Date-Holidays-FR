@@ -18,7 +18,7 @@ Check URL, replacing http by https when possible
 
 Check that search.cpan.org and rt.cpan.org are no longer referenced.
 
-Kwalitee: compare with the previous version https://cpants.cpanauthors.org/release/JFORGET/Date-Holidays-FR-0.03
+Kwalitee: compare with the previous version https://cpants.cpanauthors.org/release/JFORGET/Date-Holidays-FR-0.04
 
 MANIFEST: among others, check that all new test files are mentionned and that removed files no longer appear
 
@@ -46,7 +46,7 @@ After release
 =============
 
 Github:
-    git tag -m 'Release to CPAN' v0.04
+    git tag -m 'Release to CPAN' 0.05
     git push --tags -u origin master
 
 Change version number in:
