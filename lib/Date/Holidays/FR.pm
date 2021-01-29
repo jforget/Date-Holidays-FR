@@ -268,7 +268,7 @@ to the proper folder.
 
 On the other hand, I may be on vacation. Do not be upset if the answer
 arrives after one or  two months. Be upset only if  you do not receive
-an answer to several emails over at least one year.
+an answer to several emails over at least six months or one year.
 
 =head1 AUTHORS
 
